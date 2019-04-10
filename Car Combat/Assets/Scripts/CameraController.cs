@@ -7,12 +7,11 @@ public class CameraController : MonoBehaviour
 
     public GameObject player;
 
+    [SerializeField] GameObject cameraViewPoint;
+
     private Vector3 offset;
 
     [SerializeField] float turnSpeed = 4f;
-    
-    //float horizontalSpeed = 2f;
-    //float verticalSpeed = 2f;
     
     
     // Start is called before the first frame update
@@ -27,6 +26,6 @@ public class CameraController : MonoBehaviour
         offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * offset;
 
         transform.position = player.transform.position + offset;
-        transform.LookAt(player.transform.position);
+        transform.LookAt(cameraViewPoint.transform.position);
     }
 }
