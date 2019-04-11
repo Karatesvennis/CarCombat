@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour
 {
 
     [SerializeField] float speed = 1f;
+
+    Rigidbody rb;
     
     
     // Start is called before the first frame update
@@ -13,6 +15,15 @@ public class Projectile : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag != "Player")
+        {
+            Destroy(gameObject);
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
