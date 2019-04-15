@@ -14,9 +14,9 @@ public class EnemySpawner : MonoBehaviour
         SpawnEnemies();
     }
 
-    void SpawnEnemies()
+    public void SpawnEnemies()
     {
-        for (int i = 0; i < enemySpawnPoints.Length + 1; i++)
+        for (int i = 0; i < enemySpawnPoints.Length; i++)
         {
             Instantiate(enemy, enemySpawnPoints[i].position, Quaternion.identity);
         }

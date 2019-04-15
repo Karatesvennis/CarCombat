@@ -6,6 +6,8 @@ public class Health : MonoBehaviour
 {
     [SerializeField] float startingHealth;
     [SerializeField] float currentHealth;
+
+    [SerializeField] GameObject deathVFX;
     
     // Start is called before the first frame update
     void Start()
@@ -18,7 +20,15 @@ public class Health : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0f)
         {
-            Destroy(gameObject, 1f);
+            if (tag == "Player")
+            {
+                FindObjectOfType<GameManager>().loseLabel.gameObject.SetActive(true);
+                FindObjectOfType<GameManager>().restartButton.gameObject.SetActive(true);
+                Cursor.visible = true;
+            }
+            GameObject myDeathVFX = Instantiate(deathVFX, transform.position + Vector3.up, Quaternion.identity);
+            Destroy(myDeathVFX, 2f);
+            Destroy(gameObject, 0.2f);
         }
     }
 }

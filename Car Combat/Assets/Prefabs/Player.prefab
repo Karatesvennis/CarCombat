@@ -267,6 +267,7 @@ MonoBehaviour:
   gun: {fileID: 1223668395527042942}
   mainCam: {fileID: 0}
   speed: 100
+  fireRate: 0.3
 --- !u!114 &1223668395626403682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 500
   currentHealth: 0
+  deathVFX: {fileID: 100006, guid: e076683e0305e35498b8e8834978c0fa, type: 3}
 --- !u!1 &1223668396294309218
 GameObject:
   m_ObjectHideFlags: 0

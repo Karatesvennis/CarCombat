@@ -9,13 +9,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float rotationSpeed = 100f;
 
     private Rigidbody rb;
+
+    bool dead = false;
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
-    
+
     // Update is called once per frame
     void Update()
     {

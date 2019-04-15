@@ -16,8 +16,14 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<GameManager>().nrOfEnemiesAlive++;
         StartCoroutine(GetComponent<EnemyShoot>().Firing());
         waypoints = FindObjectsOfType<WayPoint>();
+    }
+
+    private void OnDestroy()
+    {
+        FindObjectOfType<GameManager>().nrOfEnemiesAlive--;
     }
 
     // Update is called once per frame
@@ -34,7 +40,14 @@ public class Enemy : MonoBehaviour
 
         if (proximity.magnitude < 0.5)
         {
-            currentWaypoint++;
+            if (currentWaypoint < waypoints.Length)
+            {
+                currentWaypoint++;
+            }
+            else
+            {
+                currentWaypoint = 0;
+            }
         }
     }
 }

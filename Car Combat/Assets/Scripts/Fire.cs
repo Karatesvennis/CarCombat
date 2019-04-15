@@ -9,22 +9,20 @@ public class Fire : MonoBehaviour
     [SerializeField] GameObject gun;
     [SerializeField] Camera mainCam;
     [SerializeField] float speed;
+    [SerializeField] float fireRate;
+    float nextFire;
 
     Vector3 hitPoint;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public void FireProjectile()
     {
         Ray ray;
         RaycastHit hit;
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
+            nextFire = Time.time + fireRate;
             Vector3 mouseResult = Input.mousePosition;
             mouseResult = new Vector3(Screen.width / 2, mouseResult.y);
 
