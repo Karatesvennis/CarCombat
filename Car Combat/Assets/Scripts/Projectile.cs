@@ -4,30 +4,36 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-
-    [SerializeField] float speed = 1f;
-
-    Rigidbody rb;
     
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] float damage = 50f;
+
+    public bool playerShot;
+
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Player")
+
+        if (playerShot && other.tag != "Player")
         {
-            Destroy(gameObject);
+            if (other.GetComponent<Health>())
+            {
+                other.GetComponent<Health>().DealDamage(damage);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        else if (!playerShot && other.tag != "Enemy")
+        {
+            if (other.GetComponent<Health>())
+            {
+                other.GetComponent<Health>().DealDamage(damage);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }

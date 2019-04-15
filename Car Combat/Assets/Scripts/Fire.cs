@@ -8,7 +8,6 @@ public class Fire : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] GameObject gun;
     [SerializeField] Camera mainCam;
-
     [SerializeField] float speed;
 
     Vector3 hitPoint;
@@ -17,11 +16,6 @@ public class Fire : MonoBehaviour
     void Start()
     {
         
-    }
-
-    private void Update()
-    {
-        FireProjectile();
     }
 
     public void FireProjectile()
@@ -41,6 +35,7 @@ public class Fire : MonoBehaviour
                 hitPoint = hit.point;
                 Vector3 moveDirection = (hitPoint - gun.transform.position).normalized;
                 GameObject newProjectile = Instantiate(projectile, gun.transform.position, Quaternion.identity);
+                newProjectile.GetComponent<Projectile>().playerShot = true;
                 Rigidbody rb = newProjectile.GetComponent<Rigidbody>();
                 rb.velocity = moveDirection * speed;
             }
