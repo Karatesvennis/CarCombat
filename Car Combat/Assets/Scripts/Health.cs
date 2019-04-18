@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Health : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class Health : MonoBehaviour
     [SerializeField] float currentHealth;
 
     [SerializeField] GameObject deathVFX;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +27,11 @@ public class Health : MonoBehaviour
                 FindObjectOfType<GameManager>().restartButton.gameObject.SetActive(true);
                 Cursor.visible = true;
             }
-            GameObject myDeathVFX = Instantiate(deathVFX, transform.position + Vector3.up, Quaternion.identity);
+            GameObject myDeathVFX = Instantiate(deathVFX, this.transform.position, Quaternion.identity);
             Destroy(myDeathVFX, 2f);
-            Destroy(gameObject, 0.2f);
+            Destroy(gameObject);
         }
     }
+
+
 }

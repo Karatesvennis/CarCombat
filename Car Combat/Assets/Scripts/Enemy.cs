@@ -11,8 +11,8 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent agent;
 
     int currentWaypoint = 0;
-    
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +23,8 @@ public class Enemy : MonoBehaviour
 
     private void OnDestroy()
     {
-        FindObjectOfType<GameManager>().nrOfEnemiesAlive--;
+        if (FindObjectOfType<GameManager>())
+            FindObjectOfType<GameManager>().nrOfEnemiesAlive--;
     }
 
     // Update is called once per frame
