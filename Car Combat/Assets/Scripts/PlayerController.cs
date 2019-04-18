@@ -32,4 +32,12 @@ public class PlayerController : MonoBehaviour
 
         GetComponent<Fire>().FireProjectile();
     }
+
+    /*private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            Vector3 angle = this.transform.position - other.gameObject.transform.position;
+        }
+    }*/
 }

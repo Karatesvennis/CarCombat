@@ -41,14 +41,8 @@ public class Enemy : MonoBehaviour
 
         if (proximity.magnitude < 0.5)
         {
-            if (currentWaypoint < waypoints.Length)
-            {
-                currentWaypoint++;
-            }
-            else
-            {
-                currentWaypoint = 0;
-            }
+            currentWaypoint++;
+            currentWaypoint = currentWaypoint % waypoints.Length;
         }
     }
 }
