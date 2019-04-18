@@ -28,6 +28,7 @@ public class Health : MonoBehaviour
         {
             if (tag == "Player")
             {
+                return;
                 FindObjectOfType<GameManager>().loseLabel.gameObject.SetActive(true);
                 FindObjectOfType<GameManager>().restartButton.gameObject.SetActive(true);
                 Cursor.visible = true;

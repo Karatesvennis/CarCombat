@@ -215,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5169366653286520992}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.2, z: 3}
   m_Children:
   - {fileID: 7061887344293380017}
@@ -332,6 +332,7 @@ MonoBehaviour:
   startingHealth: 200
   currentHealth: 0
   deathVFX: {fileID: 100006, guid: e076683e0305e35498b8e8834978c0fa, type: 3}
+  healthBar: {fileID: 0}
 --- !u!114 &1675260446
 MonoBehaviour:
   m_ObjectHideFlags: 0
