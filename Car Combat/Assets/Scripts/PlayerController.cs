@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float speed = 10f;
     [SerializeField] float rotationSpeed = 100f;
+    [SerializeField] float bumpForce = 10f;
 
     private Rigidbody rb;
 
@@ -33,11 +34,18 @@ public class PlayerController : MonoBehaviour
         GetComponent<Fire>().FireProjectile();
     }
 
-    /*private void OnTriggerEnter(Collider other)
+    /*private void OnCollisionEnter(Collision other)
     {
-        if (other.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy")
         {
-            Vector3 angle = this.transform.position - other.gameObject.transform.position;
+            Debug.Log("Bumped enemy");
+
+            //Rigidbody enemyRb = other.gameObject.GetComponent<Rigidbody>();
+
+            Vector3 angle = other.contacts[0].point - transform.position;
+            angle = -angle.normalized;
+            rb.AddForce(angle * bumpForce);
+            
         }
     }*/
 }
