@@ -2,23 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] float startingHealth;
-    [SerializeField] float currentHealth;
+    [SerializeField] float startingHealth = 200f;
+    [SerializeField] float currentHealth = 0f;
 
-    [SerializeField] GameObject deathVFX;
+    [SerializeField] GameObject deathVFX = null;
+
+    [SerializeField] Slider healthBar = null;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = startingHealth;
+        CalculateHealthBar();
     }
 
     public void DealDamage(float damage)
     {
         currentHealth -= damage;
+        CalculateHealthBar();
         if (currentHealth <= 0f)
         {
             if (tag == "Player")
@@ -30,6 +35,14 @@ public class Health : MonoBehaviour
             GameObject myDeathVFX = Instantiate(deathVFX, this.transform.position, Quaternion.identity);
             Destroy(myDeathVFX, 2f);
             Destroy(gameObject);
+        }
+    }
+
+    private void CalculateHealthBar()
+    {
+        if (healthBar != null)
+        {
+            healthBar.value = currentHealth / startingHealth;
         }
     }
 
