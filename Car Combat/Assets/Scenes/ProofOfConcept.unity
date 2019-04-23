@@ -2275,13 +2275,18 @@ PrefabInstance:
       objectReference: {fileID: 66117569}
     - target: {fileID: 1223668395626403612, guid: 01cf880eea92a6e47b7f9caafb5cbd15,
         type: 3}
-      propertyPath: m_CollisionDetection
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223668395626403612, guid: 01cf880eea92a6e47b7f9caafb5cbd15,
+        type: 3}
+      propertyPath: m_Mass
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1223668395626403615, guid: 01cf880eea92a6e47b7f9caafb5cbd15,
         type: 3}
       propertyPath: bumpForce
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1223668395626403682, guid: 01cf880eea92a6e47b7f9caafb5cbd15,
         type: 3}
@@ -2407,6 +2412,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5216061338249511420, guid: 9913f3e2a1f3a5a4298761906f5c33a5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 638577359}
     - target: {fileID: 5216061338579068550, guid: 9913f3e2a1f3a5a4298761906f5c33a5,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -2447,10 +2457,5 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -171
       objectReference: {fileID: 0}
-    - target: {fileID: 5216061338249511420, guid: 9913f3e2a1f3a5a4298761906f5c33a5,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 638577359}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9913f3e2a1f3a5a4298761906f5c33a5, type: 3}
