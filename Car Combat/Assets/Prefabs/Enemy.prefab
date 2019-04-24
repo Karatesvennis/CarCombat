@@ -328,7 +328,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 300
+  speed: 500
   myState: 0
 --- !u!114 &5649927560492065321
 MonoBehaviour:

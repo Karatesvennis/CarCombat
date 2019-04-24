@@ -249,12 +249,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409779a1437d6644ab04c948abe542fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 20
+  sideSpeed: 10
   rotationSpeed: 100
-  bumpForce: 200
+  bumpForce: 500
   bumpExplosionRaduis: 5
   maxSpeed: 20
-  maxRotation: 50
 --- !u!114 &1223668395626403613
 MonoBehaviour:
   m_ObjectHideFlags: 0
