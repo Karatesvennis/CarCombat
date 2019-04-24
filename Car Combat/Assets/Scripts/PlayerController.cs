@@ -8,9 +8,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed = 10f;
     [SerializeField] float rotationSpeed = 100f;
     [SerializeField] float bumpForce = 10f;
+    [SerializeField] float bumpExplosionRaduis = 2f;
     [SerializeField] float maxSpeed = 10f;
     [SerializeField] float maxRotation = 50f;
 
+    float bumpDamage = 200f;
     float newSpeedForce;
 
     private Vector3 eulerAngleVelocity;
@@ -70,9 +72,9 @@ public class PlayerController : MonoBehaviour
         //zRotation = Mathf.Clamp(zRotation, 0, 0);
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" && other.GetType() != typeof(SphereCollider))
         {
 
             Rigidbody enemyRb = other.gameObject.GetComponent<Rigidbody>();
@@ -81,17 +83,18 @@ public class PlayerController : MonoBehaviour
             if (SpeedCollisionCheck(rb, enemyRb))
             {
                 Debug.Log("Player was faster");
-                Vector3 otherAngle = other.contacts[0].point - other.transform.position;
+                Vector3 otherAngle = transform.position - other.transform.position;
                 otherAngle = -otherAngle.normalized;
-                enemyRb.AddForce((otherAngle * bumpForce) * newSpeedForce);
+                enemyRb.AddExplosionForce(bumpForce, transform.position, bumpExplosionRaduis);
+                //other.GetComponent<Health>().DealDamage(bumpDamage);
                 //Debug.Log(newSpeedForce);
             }
             else if (!SpeedCollisionCheck(rb, enemyRb))
             {
                 Debug.Log("Enemy was faster");
-                Vector3 angle = other.contacts[0].point - transform.position;
+                Vector3 angle = other.transform.position - transform.position;
                 angle = -angle.normalized;
-                rb.AddForce((angle * bumpForce) * newSpeedForce);
+                rb.AddForce((angle * bumpForce) /* * newSpeedForce*/);
                 //Debug.Log(newSpeedForce);
             }
         }

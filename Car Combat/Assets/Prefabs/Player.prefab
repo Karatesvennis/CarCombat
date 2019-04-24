@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 1223668395626403615}
   - component: {fileID: 1223668395626403613}
   - component: {fileID: 1223668395626403682}
+  - component: {fileID: 1456402105}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -219,7 +220,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0.01}
 --- !u!54 &1223668395626403612
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -234,7 +235,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &1223668395626403615
 MonoBehaviour:
@@ -250,7 +251,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   rotationSpeed: 100
-  bumpForce: 50
+  bumpForce: 200
+  bumpExplosionRaduis: 5
   maxSpeed: 20
   maxRotation: 50
 --- !u!114 &1223668395626403613
@@ -287,6 +289,19 @@ MonoBehaviour:
   currentHealth: 0
   deathVFX: {fileID: 100006, guid: e076683e0305e35498b8e8834978c0fa, type: 3}
   healthBar: {fileID: 0}
+--- !u!65 &1456402105
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223668395626403610}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.04, y: 1.17, z: 0.02}
+  m_Center: {x: 0, y: 0, z: 0.51}
 --- !u!1 &1223668396294309218
 GameObject:
   m_ObjectHideFlags: 0
