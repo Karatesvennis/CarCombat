@@ -28,16 +28,13 @@ public class Health : MonoBehaviour
         {
             if (tag == "Player")
             {
-                return;
                 FindObjectOfType<GameManager>().loseLabel.gameObject.SetActive(true);
                 FindObjectOfType<GameManager>().restartButton.gameObject.SetActive(true);
                 FindObjectOfType<GameManager>().mainMenuButton.gameObject.SetActive(true);
                 FindObjectOfType<GameManager>().crosshair.SetActive(false);
                 Cursor.visible = true;
-                
             }
-            //GameObject myDeathVFX = Instantiate(deathVFX, this.transform.position, Quaternion.identity);
-            //Destroy(myDeathVFX, 2f);
+
             Destroy(gameObject, 0.5f);
         }
     }

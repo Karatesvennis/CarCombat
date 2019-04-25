@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float sideSpeed = 5f;
     [SerializeField] float rotationSpeed = 100f;
     [SerializeField] float maxSpeed = 10f;
+    [SerializeField] GameObject deathVFX = null;
     
     float yRotation = 0f;
 
@@ -19,6 +20,12 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    private void OnDestroy()
+    {
+        GameObject myDeathVFX = Instantiate(deathVFX, this.transform.position, Quaternion.identity);
+        Destroy(myDeathVFX, 2f);
     }
 
     // Update is called once per frame

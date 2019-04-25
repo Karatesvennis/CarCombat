@@ -286,6 +286,7 @@ MonoBehaviour:
   sideSpeed: 10
   rotationSpeed: 100
   maxSpeed: 20
+  deathVFX: {fileID: 100006, guid: e076683e0305e35498b8e8834978c0fa, type: 3}
 --- !u!114 &1223668395626403613
 MonoBehaviour:
   m_ObjectHideFlags: 0
