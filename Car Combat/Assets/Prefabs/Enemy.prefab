@@ -561,6 +561,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   speed: 800
+  maxSpeed: 25
   deathVFX: {fileID: 100006, guid: e076683e0305e35498b8e8834978c0fa, type: 3}
   myState: 0
 --- !u!114 &5649927560492065321

@@ -35,21 +35,9 @@ public class Ramming : MonoBehaviour
             if (SpeedCollisionCheck(rb, otherRb))
             {
                 Debug.Log("doing collision check: " + rb.gameObject.name);
-                Vector3 otherAngle = transform.position - other.transform.position;
-                otherAngle = -otherAngle.normalized;
-                otherRb.AddForce(new Vector3(0, 10000, 0));
-                //otherRb.AddExplosionForce(bumpForce, transform.position, bumpExplosionRaduis);
+                otherRb.AddExplosionForce(bumpForce, transform.position, bumpExplosionRaduis);
                 other.GetComponentInParent<Health>().DealDamage(bumpDamage);
-                //Debug.Log(newSpeedForce);
             }
-            /*else if (!SpeedCollisionCheck(rb, otherRb))
-            {
-                Debug.Log("Enemy was faster");
-                Vector3 angle = other.transform.position - transform.position;
-                angle = -angle.normalized;
-                rb.AddForce((angle * bumpForce)  * newSpeedForce);
-                Debug.Log(newSpeedForce);
-            }*/
         }
     }
 

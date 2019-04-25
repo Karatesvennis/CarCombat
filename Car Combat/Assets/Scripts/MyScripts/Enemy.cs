@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] WayPoint[] waypoints;
     [SerializeField] float speed = 1f;
+    [SerializeField] float maxSpeed = 10f;
     [SerializeField] GameObject deathVFX = null;
 
     Rigidbody rb;
@@ -75,6 +76,8 @@ public class Enemy : MonoBehaviour
         switch (myState)
         {
             case EnemyStates.patrolling:
+
+                rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
 
                 if (proximity.magnitude < 1)
                 {

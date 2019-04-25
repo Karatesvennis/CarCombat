@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         Vector3 horizontalMovement = transform.right * moveHorizontal;
         rb.AddForce(verticalMovement * speed);
         rb.AddForce(horizontalMovement * sideSpeed);
-        //rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
 
         //Rotates the car
         eulerAngleVelocity = new Vector3(0, Input.GetAxis("Horizontal"), 0);
