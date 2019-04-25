@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemies()
     {
+        Debug.Log("Wave spawned");
         for (int i = 0; i < enemySpawnPoints.Length; i++)
         {
             Instantiate(enemy, enemySpawnPoints[i].position, Quaternion.identity);

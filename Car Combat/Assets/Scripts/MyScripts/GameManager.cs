@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Text loseLabel;
     public Button restartButton;
     public Button mainMenuButton;
+    public GameObject crosshair;
 
 
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
         loseLabel.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
         mainMenuButton.gameObject.SetActive(false);
+        crosshair = FindObjectOfType<Crosshair>().gameObject;
         Cursor.visible = false;
     }
 
@@ -39,11 +41,7 @@ public class GameManager : MonoBehaviour
             restartButton.gameObject.SetActive(true);
             mainMenuButton.gameObject.SetActive(true);
             Cursor.visible = true;
-            GameObject crosshair = FindObjectOfType<Crosshair>().gameObject;
-            if (crosshair != null)
-            {
-                crosshair.SetActive(false);
-            }
+            crosshair.SetActive(false);
         }
     }
 }
