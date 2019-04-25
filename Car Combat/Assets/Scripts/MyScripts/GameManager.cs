@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text winLabel;
     public Text loseLabel;
     public Button restartButton;
+    public Button mainMenuButton;
 
 
     // Start is called before the first frame update
@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
         winLabel.gameObject.SetActive(false);
         loseLabel.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
+        mainMenuButton.gameObject.SetActive(false);
         Cursor.visible = false;
     }
 
@@ -36,12 +37,13 @@ public class GameManager : MonoBehaviour
         {
             winLabel.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
+            mainMenuButton.gameObject.SetActive(true);
             Cursor.visible = true;
+            GameObject crosshair = FindObjectOfType<Crosshair>().gameObject;
+            if (crosshair != null)
+            {
+                crosshair.SetActive(false);
+            }
         }
-    }
-
-    public void LoadGameScene()
-    {
-        SceneManager.LoadScene("ProofOfConcept");
     }
 }

@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float speed = 1f;
     [SerializeField] float maxPatrolSpeed = 10f;
     [SerializeField] float maxAttackSpeed = 10f;
+    [SerializeField] float turnspeed = 5f;
     [SerializeField] GameObject deathVFX = null;
 
     Rigidbody rb;
@@ -55,22 +56,12 @@ public class Enemy : MonoBehaviour
         FollowTargetWithRotation(currentTarget.position, speed);
     }
 
-    /*private void Move()
-    {
-        Vector3 target = waypoints[currentWaypoint].transform.position;
-        Vector3 proximity = target - transform.position;
-        agent.SetDestination(target);
-
-        if (proximity.magnitude < 0.5)
-        {
-            currentWaypoint++;
-            currentWaypoint = currentWaypoint % waypoints.Length;
-        }
-    }*/
-
     void FollowTargetWithRotation(Vector3 target, float speed)
     {
-        transform.LookAt(target);
+        Vector3 direction = target - rb.position;
+        direction.Normalize();
+        rb.rotation = Quaternion.Slerp(rb.rotation, Quaternion.LookRotation(direction), turnspeed * Time.deltaTime);
+        
         rb.velocity = transform.forward * speed * Time.deltaTime;
         Vector3 proximity = target - transform.position;
 

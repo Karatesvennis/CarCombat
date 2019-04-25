@@ -336,7 +336,7 @@ Transform:
   m_GameObject: {fileID: 3877415624082259702}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.002, y: 0, z: 0.594}
-  m_LocalScale: {x: 0.6, y: 0.3, z: 0.03}
+  m_LocalScale: {x: 0.84, y: 0.54, z: 0.03}
   m_Children: []
   m_Father: {fileID: 2768926771921642675}
   m_RootOrder: 2
@@ -397,7 +397,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.8019667, z: 0.4}
+  m_Size: {x: 1, y: 0.98, z: 0.4}
   m_Center: {x: 0, y: -0.012858708, z: 0.61}
 --- !u!114 &5760324434215782204
 MonoBehaviour:
@@ -563,6 +563,7 @@ MonoBehaviour:
   speed: 800
   maxPatrolSpeed: 15
   maxAttackSpeed: 20
+  turnspeed: 4
   deathVFX: {fileID: 100006, guid: e076683e0305e35498b8e8834978c0fa, type: 3}
   myState: 0
 --- !u!114 &5649927560492065321

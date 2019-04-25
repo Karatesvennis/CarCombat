@@ -31,7 +31,13 @@ public class Health : MonoBehaviour
                 return;
                 FindObjectOfType<GameManager>().loseLabel.gameObject.SetActive(true);
                 FindObjectOfType<GameManager>().restartButton.gameObject.SetActive(true);
+                FindObjectOfType<GameManager>().mainMenuButton.gameObject.SetActive(true);
                 Cursor.visible = true;
+                GameObject crosshair = FindObjectOfType<Crosshair>().gameObject;
+                if (crosshair != null)
+                {
+                    crosshair.SetActive(false);
+                }
             }
             //GameObject myDeathVFX = Instantiate(deathVFX, this.transform.position, Quaternion.identity);
             //Destroy(myDeathVFX, 2f);
