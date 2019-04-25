@@ -1120,10 +1120,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nrOfEnemiesAlive: 0
+  lastWave: 0
   winLabel: {fileID: 311565918}
   loseLabel: {fileID: 679408566}
   restartButton: {fileID: 1282016583}
   mainMenuButton: {fileID: 510049309}
+  crosshair: {fileID: 0}
 --- !u!4 &638577360
 Transform:
   m_ObjectHideFlags: 0
@@ -1928,7 +1930,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1886508252}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d0e9f2085bc4ab4e91729f2fd2ec298, type: 3}
   m_Name: 

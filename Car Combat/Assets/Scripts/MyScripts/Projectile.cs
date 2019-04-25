@@ -43,7 +43,7 @@ public class Projectile : MonoBehaviour
     void DestroyWithVFX()
     {
         GameObject myDeathVFX = Instantiate(deathVFX, this.transform.position, Quaternion.identity);
-        Destroy(myDeathVFX, 0.5f);
+        Destroy(myDeathVFX, 0.2f);
         Destroy(gameObject);
     }
 }
