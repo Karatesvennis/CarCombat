@@ -8,7 +8,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] WayPoint[] waypoints;
     [SerializeField] float speed = 1f;
-    [SerializeField] float maxSpeed = 10f;
+    [SerializeField] float maxPatrolSpeed = 10f;
+    [SerializeField] float maxAttackSpeed = 10f;
     [SerializeField] GameObject deathVFX = null;
 
     Rigidbody rb;
@@ -70,14 +71,14 @@ public class Enemy : MonoBehaviour
     void FollowTargetWithRotation(Vector3 target, float speed)
     {
         transform.LookAt(target);
-        rb.AddRelativeForce(Vector3.forward * speed * Time.deltaTime, ForceMode.Force);
+        rb.velocity = transform.forward * speed * Time.deltaTime;
         Vector3 proximity = target - transform.position;
 
         switch (myState)
         {
             case EnemyStates.patrolling:
 
-                rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+                rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxPatrolSpeed);
 
                 if (proximity.magnitude < 1)
                 {
@@ -86,6 +87,8 @@ public class Enemy : MonoBehaviour
                 break;
 
             case EnemyStates.attacking:
+
+                rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxAttackSpeed);
                 break;
 
             default:
