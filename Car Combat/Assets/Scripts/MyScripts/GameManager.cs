@@ -7,13 +7,14 @@ public class GameManager : MonoBehaviour
 {
 
     public int nrOfEnemiesAlive;
-    bool lastWave = false;
+    public bool lastWave = false;
 
     [SerializeField] Text winLabel;
     public Text loseLabel;
     public Button restartButton;
     public Button mainMenuButton;
     public GameObject crosshair;
+    private EnemyShoot enemyShoot;
 
 
     // Start is called before the first frame update

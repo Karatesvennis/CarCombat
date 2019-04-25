@@ -9,21 +9,28 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float timeBetweenShots = 1;
 
+    private bool lastWave = false;
+
     GameObject player;
 
     // Start is called before the first frame update
     void Awake()
     {
         player = FindObjectOfType<PlayerController>().gameObject;
+        lastWave = FindObjectOfType<GameManager>().lastWave;
     }
+
 
     public IEnumerator Firing()
     {
-        while (true)
+        if (lastWave)
         {
-            FireOnPlayer();
+            while (true)
+            {
+                FireOnPlayer();
 
-            yield return new WaitForSeconds(timeBetweenShots);
+                yield return new WaitForSeconds(timeBetweenShots);
+            }
         }
     }
 

@@ -597,7 +597,7 @@ MonoBehaviour:
     type: 3}
   gun: {fileID: 7475175222299469967}
   speed: 100
-  timeBetweenShots: 2
+  timeBetweenShots: 5
 --- !u!1 &6285693294321643959
 GameObject:
   m_ObjectHideFlags: 0
