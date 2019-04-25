@@ -16,10 +16,4 @@ public class Crosshair : MonoBehaviour
 
         GUI.DrawTexture(new Rect(xMin, yMin, crosshairImage.width, crosshairImage.height), crosshairImage);
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 }

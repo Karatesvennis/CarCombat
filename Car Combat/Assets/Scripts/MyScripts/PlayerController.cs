@@ -8,14 +8,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed = 10f;
     [SerializeField] float sideSpeed = 5f;
     [SerializeField] float rotationSpeed = 100f;
-    //[SerializeField] float bumpForce = 10f;
-    //[SerializeField] float bumpExplosionRaduis = 2f;
     [SerializeField] float maxSpeed = 10f;
-    //[SerializeField] float bumpDamage = 200f;
-    float yRotation = 0f;
-
     
-    //float newSpeedForce;
+    float yRotation = 0f;
 
     private Vector3 eulerAngleVelocity;
     private Rigidbody rb;
