@@ -30,9 +30,12 @@ public class EnemyShoot : MonoBehaviour
 
     public void FireOnPlayer()
     {
-        Vector3 moveDirection = (player.transform.position - gun.transform.position).normalized;
-        GameObject newProjectile = Instantiate(projectile, gun.transform.position, Quaternion.identity);
-        Rigidbody rb = newProjectile.GetComponent<Rigidbody>();
-        rb.velocity = moveDirection * speed;
+        if (player != null)
+        {
+            Vector3 moveDirection = (player.transform.position - gun.transform.position).normalized;
+            GameObject newProjectile = Instantiate(projectile, gun.transform.position, Quaternion.identity);
+            Rigidbody rb = newProjectile.GetComponent<Rigidbody>();
+            rb.velocity = moveDirection * speed;
+        }
     }
 }
