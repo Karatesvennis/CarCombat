@@ -8,8 +8,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject enemy;
     [SerializeField] Transform[] enemySpawnPoints;
 
-    
-    void Start()
+
+    private void Awake()
     {
         SpawnEnemies();
     }
