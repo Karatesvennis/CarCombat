@@ -35,7 +35,7 @@ public class Ramming : MonoBehaviour
             if (SpeedCollisionCheck(rb, otherRb))
             {
                 Debug.Log("doing collision check: " + rb.gameObject.name);
-                otherRb.AddExplosionForce(bumpForce, transform.position, bumpExplosionRaduis);
+                otherRb.AddExplosionForce(bumpForce, transform.position, bumpExplosionRaduis, 1.0f, mode: ForceMode.Impulse);
                 other.GetComponentInParent<Health>().DealDamage(bumpDamage);
             }
         }

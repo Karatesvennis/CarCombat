@@ -2460,7 +2460,7 @@ PrefabInstance:
     - target: {fileID: 2573291403896633879, guid: 01cf880eea92a6e47b7f9caafb5cbd15,
         type: 3}
       propertyPath: bumpForce
-      value: 2000
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01cf880eea92a6e47b7f9caafb5cbd15, type: 3}
