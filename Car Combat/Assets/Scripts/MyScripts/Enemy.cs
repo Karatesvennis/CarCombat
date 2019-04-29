@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
 
     Rigidbody rb;
     GameObject player;
+    new BoxCollider collider;
     public bool isGrounded;
 
     public enum EnemyStates { patrolling, attacking };
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
     int currentWaypoint = 0;
     float selectTargetRate = 2f;
     float nextSelectTarget = 0f;
+    float distanceToGround;
 
     public Vector3 extraForce;
     public Vector3 extraRotation;
@@ -36,9 +38,11 @@ public class Enemy : MonoBehaviour
         myState = EnemyStates.patrolling;
         FindObjectOfType<GameManager>().nrOfEnemiesAlive++;
         rb = GetComponent<Rigidbody>();
+        collider = GetComponent<BoxCollider>();
         player = FindObjectOfType<PlayerController>().gameObject;
         StartCoroutine(GetComponent<EnemyShoot>().Firing());
         waypoints = FindObjectsOfType<WayPoint>();
+        distanceToGround = collider.bounds.extents.y;
         SelectTarget();
     }
 
@@ -62,7 +66,7 @@ public class Enemy : MonoBehaviour
     void FollowTargetWithRotation(Vector3 target, float speed)
     {
 
-        if (isGrounded)
+        if (IsGrounded())
         {
             Vector3 direction = target - rb.position;
             direction.Normalize();
@@ -114,11 +118,16 @@ public class Enemy : MonoBehaviour
         currentTarget = waypoints[currentWaypoint].transform;
     }
 
+    private bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, distanceToGround + 0.1f);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
-            if (other.gameObject.GetComponent<PlayerController>().isGrounded)
+            if (other.gameObject.GetComponent<PlayerController>().IsGrounded())
             {
                 player = other.gameObject;
                 currentTarget = player.transform;

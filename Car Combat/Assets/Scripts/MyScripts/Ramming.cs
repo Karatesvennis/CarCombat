@@ -36,10 +36,11 @@ public class Ramming : MonoBehaviour
             {
                 Debug.Log("doing collision check: " + rb.gameObject.name);
 
-                Vector3 extraForce = rb.gameObject.transform.forward * 30;
-                extraForce += Vector3.up * 5;
+                Vector3 extraForce = rb.gameObject.transform.forward * 10;
 
-                Vector3 extraRot = rb.gameObject.transform.right * 10;
+                extraForce += Vector3.up * 3;
+
+                Vector3 extraRot = rb.gameObject.transform.right * 20;
 
                 if (otherRb.GetComponent<Enemy>())
                 {
@@ -47,13 +48,6 @@ public class Ramming : MonoBehaviour
                     otherRb.gameObject.GetComponent<Enemy>().extraRotation = extraRot;
                 }
 
-                //  otherRb.AddForce(rb.gameObject.transform.forward * 500, ForceMode.Impulse);
-                //  otherRb.AddForce(Vector3.up * 90, ForceMode.Impulse);
-                //
-                //  otherRb.AddTorque(rb.gameObject.transform.right * 90, ForceMode.Impulse);
-
-
-                //   otherRb.AddExplosionForce(bumpForce, transform.position, bumpExplosionRaduis, 2.0f, mode: ForceMode.Impulse);
                 other.GetComponentInParent<Health>().DealDamage(bumpDamage);
             }
         }

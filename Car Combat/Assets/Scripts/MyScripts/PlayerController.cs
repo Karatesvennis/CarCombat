@@ -12,12 +12,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject deathVFX = null;
     //[SerializeField] float torque = 1f;
 
+    float distanceToGround;
+
     public Vector3 com;
     
     public bool isGrounded = false;
 
     private Vector3 eulerAngleVelocity;
     private Rigidbody rb;
+    new Collider collider;
     //private Vector3 baseRotation;
 
     
@@ -26,7 +29,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
         rb.centerOfMass = com;
+        distanceToGround = collider.bounds.extents.y;
     }
 
     private void OnDestroy()
@@ -48,20 +53,24 @@ public class PlayerController : MonoBehaviour
 
     private void TestMove()
     {
-        float moveVertical = Input.GetAxis("Vertical");
-        float turn = Input.GetAxis("Horizontal");
-        float drift = 2f;
-        float forwardSpeedAdjustment = speed - transform.InverseTransformDirection(rb.velocity).z;
-        float sideSpeedAdjustment = -transform.InverseTransformDirection(rb.velocity).x / drift;
+        if (IsGrounded())
+        {
+            float moveVertical = Input.GetAxis("Vertical");
+            float turn = Input.GetAxis("Horizontal");
+            float drift = 5f;
+            float forwardSpeedAdjustment = speed - transform.InverseTransformDirection(rb.velocity).z;
+            float sideSpeedAdjustment = -transform.InverseTransformDirection(rb.velocity).x / drift;
 
-        Vector3 localVelocity = rb.velocity;
+            Vector3 localVelocity = rb.velocity;
 
-        Vector3 verticalMovement = transform.forward * moveVertical;
-        Vector3 horizontalMovement = transform.right * turn;
+            Vector3 verticalMovement = transform.forward * moveVertical;
+            Vector3 horizontalMovement = transform.right * turn;
 
-        rb.AddForce(verticalMovement * speed);
-        rb.AddRelativeForce(sideSpeedAdjustment, 0f, 0f, ForceMode.VelocityChange);
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+            rb.AddForce(verticalMovement * speed);
+            rb.AddRelativeForce(sideSpeedAdjustment, 0f, 0f, ForceMode.VelocityChange);
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+        }
+        
 
         //Testar
         eulerAngleVelocity = new Vector3(0, Input.GetAxis("Horizontal"), 0);
@@ -92,5 +101,10 @@ public class PlayerController : MonoBehaviour
         eulerAngleVelocity = new Vector3(0, Input.GetAxis("Horizontal"), 0);
         Quaternion deltaRotation = Quaternion.Euler((eulerAngleVelocity * rotationSpeed) * Time.fixedDeltaTime);
         rb.rotation *= deltaRotation;
+    }
+
+    public bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, distanceToGround + 0.1f);
     }
 }
