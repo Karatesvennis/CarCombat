@@ -12,8 +12,8 @@ public class Ramming : MonoBehaviour
     float newSpeedForce;
 
     Rigidbody rb;
-    
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +35,26 @@ public class Ramming : MonoBehaviour
             if (SpeedCollisionCheck(rb, otherRb))
             {
                 Debug.Log("doing collision check: " + rb.gameObject.name);
-                otherRb.AddExplosionForce(bumpForce, transform.position, bumpExplosionRaduis, 1.0f, mode: ForceMode.Impulse);
+
+                Vector3 extraForce = rb.gameObject.transform.forward * 500;
+                extraForce += Vector3.up * 90;
+
+                Vector3 extraRot = rb.gameObject.transform.right * 90;
+
+                if (otherRb.GetComponent<Enemy>())
+                {
+                    otherRb.gameObject.GetComponent<Enemy>().extraForce = extraForce;
+                    otherRb.gameObject.GetComponent<Enemy>().extraRotation = extraRot;
+
+                }
+
+                //  otherRb.AddForce(rb.gameObject.transform.forward * 500, ForceMode.Impulse);
+                //  otherRb.AddForce(Vector3.up * 90, ForceMode.Impulse);
+                //
+                //  otherRb.AddTorque(rb.gameObject.transform.right * 90, ForceMode.Impulse);
+
+
+                //   otherRb.AddExplosionForce(bumpForce, transform.position, bumpExplosionRaduis, 2.0f, mode: ForceMode.Impulse);
                 other.GetComponentInParent<Health>().DealDamage(bumpDamage);
             }
         }
@@ -43,19 +62,9 @@ public class Ramming : MonoBehaviour
 
     bool SpeedCollisionCheck(Rigidbody player, Rigidbody enemy)
     {
-        
-        var speedDifference = player.velocity.sqrMagnitude - enemy.velocity.sqrMagnitude;
-        var nextSpeedDifference = enemy.velocity.sqrMagnitude - player.velocity.sqrMagnitude;
 
-        if (speedDifference > nextSpeedDifference)
-        {
-            newSpeedForce = speedDifference;
-            return true;
-        }
-        else
-        {
-            newSpeedForce = nextSpeedDifference;
-            return false;
-        }
+        var speedDifference = player.velocity.sqrMagnitude - enemy.velocity.sqrMagnitude;
+
+        return speedDifference >= 0;
     }
 }

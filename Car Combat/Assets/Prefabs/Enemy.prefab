@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b64f43ca2bf654eaccb4f87df04326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bumpForce: 500
+  bumpForce: 1000
   bumpExplosionRaduis: 3
   bumpDamage: 100
 --- !u!1 &5169366653286520992

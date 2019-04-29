@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
 
     Rigidbody rb;
     GameObject player;
+    public bool isGrounded;
 
     public enum EnemyStates { patrolling, attacking };
     public EnemyStates myState;
@@ -25,6 +26,8 @@ public class Enemy : MonoBehaviour
     float selectTargetRate = 2f;
     float nextSelectTarget = 0f;
 
+    public Vector3 extraForce;
+    public Vector3 extraRotation;
 
 
     // Start is called before the first frame update
@@ -45,7 +48,7 @@ public class Enemy : MonoBehaviour
         {
             FindObjectOfType<GameManager>().nrOfEnemiesAlive--;
         }
-            
+
         GameObject myDeathVFX = Instantiate(deathVFX, this.transform.position, Quaternion.identity);
         Destroy(myDeathVFX, 2f);
     }
@@ -61,8 +64,12 @@ public class Enemy : MonoBehaviour
         Vector3 direction = target - rb.position;
         direction.Normalize();
         rb.rotation = Quaternion.Slerp(rb.rotation, Quaternion.LookRotation(direction), turnspeed * Time.deltaTime);
-        
-        rb.velocity = transform.forward * speed * Time.deltaTime;
+
+        rb.velocity = transform.forward * speed * Time.deltaTime; // own
+
+
+
+
         Vector3 proximity = target - transform.position;
 
         switch (myState)
@@ -86,6 +93,14 @@ public class Enemy : MonoBehaviour
                 break;
         }
 
+        extraForce = Vector3.Lerp(extraForce, Vector3.zero, Time.deltaTime);
+        extraRotation = Vector3.Lerp(extraRotation, Vector3.zero, Time.deltaTime);
+        rb.velocity += extraForce; // external
+        rb.rotation *= Quaternion.Euler(extraRotation);
+
+        rb.velocity += Physics.gravity;
+
+
     }
 
     void SelectTarget()
@@ -96,11 +111,14 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.gameObject.GetComponent<PlayerController>())
         {
-            player = other.gameObject;
-            currentTarget = player.transform;
-            myState = EnemyStates.attacking;
+            if (other.gameObject.GetComponent<PlayerController>().isGrounded)
+            {
+                player = other.gameObject;
+                currentTarget = player.transform;
+                myState = EnemyStates.attacking;
+            }
         }
     }
 

@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject deathVFX = null;
     
     float yRotation = 0f;
+    public bool isGrounded = false;
 
     private Vector3 eulerAngleVelocity;
     private Rigidbody rb;
