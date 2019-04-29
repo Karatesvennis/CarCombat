@@ -54,51 +54,56 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         FollowTargetWithRotation(currentTarget.position, speed);
     }
 
     void FollowTargetWithRotation(Vector3 target, float speed)
     {
-        Vector3 direction = target - rb.position;
-        direction.Normalize();
-        rb.rotation = Quaternion.Slerp(rb.rotation, Quaternion.LookRotation(direction), turnspeed * Time.deltaTime);
 
-        rb.velocity = transform.forward * speed * Time.deltaTime; // own
-
-
-
-
-        Vector3 proximity = target - transform.position;
-
-        switch (myState)
+        if (isGrounded)
         {
-            case EnemyStates.patrolling:
+            Vector3 direction = target - rb.position;
+            direction.Normalize();
+            rb.rotation = Quaternion.Slerp(rb.rotation, Quaternion.LookRotation(direction), turnspeed * Time.fixedDeltaTime);
 
-                rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxPatrolSpeed);
+            float yVelocity = rb.velocity.y;
+            rb.velocity = transform.forward * speed * Time.fixedDeltaTime; // own
+            rb.velocity = new Vector3(rb.velocity.x, Physics.gravity.y, rb.velocity.z);
 
-                if (proximity.magnitude < 2)
-                {
-                    SelectTarget();
-                }
-                break;
 
-            case EnemyStates.attacking:
 
-                rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxAttackSpeed);
-                break;
 
-            default:
-                break;
+            Vector3 proximity = target - transform.position;
+
+            switch (myState)
+            {
+                case EnemyStates.patrolling:
+
+                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxPatrolSpeed);
+
+                    if (proximity.magnitude < 2)
+                    {
+                        SelectTarget();
+                    }
+                    break;
+
+                case EnemyStates.attacking:
+
+                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxAttackSpeed);
+                    break;
+
+                default:
+                    break;
+            }
         }
+        
 
-        extraForce = Vector3.Lerp(extraForce, Vector3.zero, Time.deltaTime);
-        extraRotation = Vector3.Lerp(extraRotation, Vector3.zero, Time.deltaTime);
+        extraForce = Vector3.Lerp(extraForce, Vector3.zero, Time.fixedDeltaTime * 5);
+        extraRotation = Vector3.Lerp(extraRotation, Vector3.zero, Time.fixedDeltaTime * 5);
         rb.velocity += extraForce; // external
         rb.rotation *= Quaternion.Euler(extraRotation);
-
-        rb.velocity += Physics.gravity;
 
 
     }

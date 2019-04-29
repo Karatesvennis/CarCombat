@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 eulerAngleVelocity;
     private Rigidbody rb;
+    private Vector3 baseRotation;
     
     // Start is called before the first frame update
     void Start()
@@ -29,8 +30,7 @@ public class PlayerController : MonoBehaviour
         Destroy(myDeathVFX, 2f);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         Move();
         GetComponent<Fire>().FireProjectile();
@@ -39,15 +39,20 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         //Drives the car
-        float moveVertical = Input.GetAxis("Vertical");
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        Vector3 verticalMovement = transform.forward * moveVertical;
-        Vector3 horizontalMovement = transform.right * moveHorizontal;
-        rb.AddForce(verticalMovement * speed);
-        rb.AddForce(horizontalMovement * sideSpeed);
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+
+        if (isGrounded)
+        {
+            float moveVertical = Input.GetAxis("Vertical");
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            Vector3 verticalMovement = transform.forward * moveVertical;
+            Vector3 horizontalMovement = transform.right * moveHorizontal;
+            rb.AddForce(verticalMovement * speed);
+            rb.AddForce(horizontalMovement * sideSpeed);
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+        }
 
         //Rotates the car
+        
         eulerAngleVelocity = new Vector3(0, Input.GetAxis("Horizontal"), 0);
         Quaternion deltaRotation = Quaternion.Euler((eulerAngleVelocity * rotationSpeed) * Time.deltaTime);
         rb.rotation *= deltaRotation;

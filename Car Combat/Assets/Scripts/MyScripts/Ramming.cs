@@ -36,16 +36,15 @@ public class Ramming : MonoBehaviour
             {
                 Debug.Log("doing collision check: " + rb.gameObject.name);
 
-                Vector3 extraForce = rb.gameObject.transform.forward * 500;
-                extraForce += Vector3.up * 90;
+                Vector3 extraForce = rb.gameObject.transform.forward * 30;
+                extraForce += Vector3.up * 5;
 
-                Vector3 extraRot = rb.gameObject.transform.right * 90;
+                Vector3 extraRot = rb.gameObject.transform.right * 10;
 
                 if (otherRb.GetComponent<Enemy>())
                 {
                     otherRb.gameObject.GetComponent<Enemy>().extraForce = extraForce;
                     otherRb.gameObject.GetComponent<Enemy>().extraRotation = extraRot;
-
                 }
 
                 //  otherRb.AddForce(rb.gameObject.transform.forward * 500, ForceMode.Impulse);
