@@ -598,7 +598,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &1717765462377480768
@@ -620,8 +620,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   speed: 5000
-  maxPatrolSpeed: 30
-  maxAttackSpeed: 35
+  maxPatrolSpeed: 10
+  maxAttackSpeed: 15
   turnspeed: 4
   deathVFX: {fileID: 100006, guid: e076683e0305e35498b8e8834978c0fa, type: 3}
   isGrounded: 0

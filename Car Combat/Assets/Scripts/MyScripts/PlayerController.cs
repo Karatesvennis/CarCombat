@@ -10,18 +10,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float rotationSpeed = 100f;
     [SerializeField] float maxSpeed = 10f;
     [SerializeField] GameObject deathVFX = null;
+    //[SerializeField] float torque = 1f;
+
+    public Vector3 com;
     
-    float yRotation = 0f;
     public bool isGrounded = false;
 
     private Vector3 eulerAngleVelocity;
     private Rigidbody rb;
-    private Vector3 baseRotation;
+    //private Vector3 baseRotation;
+
+    
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.centerOfMass = com;
     }
 
     private void OnDestroy()
@@ -32,8 +37,39 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Move();
+        //Move();
         GetComponent<Fire>().FireProjectile();
+    }
+
+    private void FixedUpdate()
+    {
+        TestMove();
+    }
+
+    private void TestMove()
+    {
+        float moveVertical = Input.GetAxis("Vertical");
+        float turn = Input.GetAxis("Horizontal");
+        float drift = 2f;
+        float forwardSpeedAdjustment = speed - transform.InverseTransformDirection(rb.velocity).z;
+        float sideSpeedAdjustment = -transform.InverseTransformDirection(rb.velocity).x / drift;
+
+        Vector3 localVelocity = rb.velocity;
+
+        Vector3 verticalMovement = transform.forward * moveVertical;
+        Vector3 horizontalMovement = transform.right * turn;
+
+        rb.AddForce(verticalMovement * speed);
+        rb.AddRelativeForce(sideSpeedAdjustment, 0f, 0f, ForceMode.VelocityChange);
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+
+        //Testar
+        eulerAngleVelocity = new Vector3(0, Input.GetAxis("Horizontal"), 0);
+        Quaternion deltaRotation = Quaternion.Euler((eulerAngleVelocity * rotationSpeed) * Time.fixedDeltaTime);
+        rb.rotation *= deltaRotation;
+
+
+        //rb.AddRelativeTorque(transform.up * torque * turn);
     }
 
     private void Move()
@@ -54,7 +90,7 @@ public class PlayerController : MonoBehaviour
         //Rotates the car
         
         eulerAngleVelocity = new Vector3(0, Input.GetAxis("Horizontal"), 0);
-        Quaternion deltaRotation = Quaternion.Euler((eulerAngleVelocity * rotationSpeed) * Time.deltaTime);
+        Quaternion deltaRotation = Quaternion.Euler((eulerAngleVelocity * rotationSpeed) * Time.fixedDeltaTime);
         rb.rotation *= deltaRotation;
     }
 }
