@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         collider = GetComponent<BoxCollider>();
         player = FindObjectOfType<PlayerController>().gameObject;
-        StartCoroutine(GetComponent<EnemyShoot>().Firing());
+        //StartCoroutine(GetComponent<EnemyShoot>().Firing());
         waypoints = FindObjectsOfType<WayPoint>();
         distanceToGround = collider.bounds.extents.y;
         SelectTarget();
@@ -66,11 +66,12 @@ public class Enemy : MonoBehaviour
     void FollowTargetWithRotation(Vector3 target, float speed)
     {
 
+        Vector3 direction = target - rb.position;
+        direction.Normalize();
+        rb.rotation = Quaternion.Slerp(rb.rotation, Quaternion.LookRotation(direction), turnspeed * Time.fixedDeltaTime);
+
         if (IsGrounded())
         {
-            Vector3 direction = target - rb.position;
-            direction.Normalize();
-            rb.rotation = Quaternion.Slerp(rb.rotation, Quaternion.LookRotation(direction), turnspeed * Time.fixedDeltaTime);
 
             float yVelocity = rb.velocity.y;
             rb.velocity = transform.forward * speed * Time.fixedDeltaTime; // own

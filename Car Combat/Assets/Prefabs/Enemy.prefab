@@ -430,7 +430,6 @@ GameObject:
   - component: {fileID: 9221450857522285229}
   - component: {fileID: 1717765462377480768}
   - component: {fileID: 5649927560492065321}
-  - component: {fileID: 1675260446}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -584,23 +583,6 @@ MonoBehaviour:
   startingHealth: 200
   currentHealth: 0
   healthBar: {fileID: 0}
---- !u!114 &1675260446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5169366653286520992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f0142b716332f48af02661167fc045, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 5896167323806151158, guid: c850236dd80aa2b47a98d1e20e91a4ed,
-    type: 3}
-  gun: {fileID: 7475175222299469967}
-  speed: 100
-  timeBetweenShots: 5
 --- !u!1 &6285693294321643959
 GameObject:
   m_ObjectHideFlags: 0

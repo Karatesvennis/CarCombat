@@ -21,10 +21,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 eulerAngleVelocity;
     private Rigidbody rb;
     new Collider collider;
-    //private Vector3 baseRotation;
 
-    
-    
+    public Vector3 extraForce;
+    public Vector3 extraRotation;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,8 +79,11 @@ public class PlayerController : MonoBehaviour
         Quaternion deltaRotation = Quaternion.Euler((eulerAngleVelocity * rotationSpeed) * Time.fixedDeltaTime);
         rb.rotation *= deltaRotation;
 
-
-        //rb.AddRelativeTorque(transform.up * torque * turn);
+        //For ramming
+        extraForce = Vector3.Lerp(extraForce, Vector3.zero, Time.fixedDeltaTime * 5);
+        extraRotation = Vector3.Lerp(extraRotation, Vector3.zero, Time.fixedDeltaTime * 5);
+        rb.velocity += extraForce; // external
+        rb.rotation *= Quaternion.Euler(extraRotation);
     }
 
     private void Move()
