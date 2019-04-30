@@ -24,7 +24,6 @@ public class Ramming : MonoBehaviour
     {
         if (other.GetType() != typeof(SphereCollider) && other.gameObject.tag == "Enemy" || other.gameObject.tag == "Player")
         {
-            Debug.Log("entered collision");
             Rigidbody otherRb = other.gameObject.GetComponentInParent<Rigidbody>();
 
             if (!otherRb)
@@ -34,7 +33,6 @@ public class Ramming : MonoBehaviour
 
             if (SpeedCollisionCheck(rb, otherRb))
             {
-                Debug.Log("doing collision check: " + rb.gameObject.name);
 
                 Vector3 extraForce = rb.gameObject.transform.forward * 3;
 
