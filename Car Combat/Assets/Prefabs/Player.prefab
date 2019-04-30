@@ -289,6 +289,8 @@ MonoBehaviour:
   deathVFX: {fileID: 100006, guid: e076683e0305e35498b8e8834978c0fa, type: 3}
   com: {x: 0, y: -1, z: 0}
   isGrounded: 0
+  extraForce: {x: 0, y: 0, z: 0}
+  extraRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1223668395626403613
 MonoBehaviour:
   m_ObjectHideFlags: 0

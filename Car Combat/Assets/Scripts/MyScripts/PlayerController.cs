@@ -44,16 +44,15 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //Move();
         GetComponent<Fire>().FireProjectile();
     }
 
     private void FixedUpdate()
     {
-        TestMove();
+        Move();
     }
 
-    private void TestMove()
+    private void Move()
     {
         if (IsGrounded())
         {
@@ -84,28 +83,6 @@ public class PlayerController : MonoBehaviour
         extraRotation = Vector3.Lerp(extraRotation, Vector3.zero, Time.fixedDeltaTime * 5);
         rb.velocity += extraForce; // external
         rb.rotation *= Quaternion.Euler(extraRotation);
-    }
-
-    private void Move()
-    {
-        //Drives the car
-
-        if (isGrounded)
-        {
-            float moveVertical = Input.GetAxis("Vertical");
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            Vector3 verticalMovement = transform.forward * moveVertical;
-            Vector3 horizontalMovement = transform.right * moveHorizontal;
-            rb.AddForce(verticalMovement * speed);
-            rb.AddForce(horizontalMovement * sideSpeed);
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
-        }
-
-        //Rotates the car
-        
-        eulerAngleVelocity = new Vector3(0, Input.GetAxis("Horizontal"), 0);
-        Quaternion deltaRotation = Quaternion.Euler((eulerAngleVelocity * rotationSpeed) * Time.fixedDeltaTime);
-        rb.rotation *= deltaRotation;
     }
 
     public bool IsGrounded()
