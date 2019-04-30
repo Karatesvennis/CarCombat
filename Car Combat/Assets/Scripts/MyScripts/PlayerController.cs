@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float rotationSpeed = 100f;
     [SerializeField] float maxSpeed = 10f;
     [SerializeField] GameObject deathVFX = null;
-    //[SerializeField] float torque = 1f;
+
+    private float normalMaxSpeed = 0f;
 
     float distanceToGround;
 
@@ -34,6 +35,8 @@ public class PlayerController : MonoBehaviour
         collider = GetComponent<Collider>();
         rb.centerOfMass = com;
         distanceToGround = collider.bounds.extents.y;
+        normalMaxSpeed = maxSpeed;
+        
     }
 
     private void OnDestroy()
@@ -56,6 +59,11 @@ public class PlayerController : MonoBehaviour
     {
         if (IsGrounded())
         {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                maxSpeed = maxSpeed + 10;
+            }
+
             float moveVertical = Input.GetAxis("Vertical");
             float turn = Input.GetAxis("Horizontal");
             float drift = 5f;
@@ -70,6 +78,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(verticalMovement * speed);
             rb.AddRelativeForce(sideSpeedAdjustment, 0f, 0f, ForceMode.VelocityChange);
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+            maxSpeed = normalMaxSpeed;
         }
         
 
