@@ -444,7 +444,7 @@ MonoBehaviour:
     type: 3}
   gun: {fileID: 1223668395527042942}
   mainCam: {fileID: 0}
-  speed: 100
+  speed: 50
   fireRate: 0.3
 --- !u!114 &1223668395626403682
 MonoBehaviour:
