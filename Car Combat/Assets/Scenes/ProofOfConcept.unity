@@ -1356,7 +1356,6 @@ GameObject:
   m_Component:
   - component: {fileID: 724518928}
   - component: {fileID: 724518927}
-  - component: {fileID: 724518926}
   m_Layer: 0
   m_Name: MiniMapCamera
   m_TagString: Untagged
@@ -1364,14 +1363,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &724518926
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 724518925}
-  m_Enabled: 1
 --- !u!20 &724518927
 Camera:
   m_ObjectHideFlags: 0
@@ -3781,11 +3772,6 @@ PrefabInstance:
       propertyPath: mainCam
       value: 
       objectReference: {fileID: 66117569}
-    - target: {fileID: 1223668395626403613, guid: 01cf880eea92a6e47b7f9caafb5cbd15,
-        type: 3}
-      propertyPath: amountOfAmmo
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1223668395626403682, guid: 01cf880eea92a6e47b7f9caafb5cbd15,
         type: 3}
       propertyPath: healthBar

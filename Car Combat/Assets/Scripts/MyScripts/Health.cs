@@ -9,6 +9,8 @@ public class Health : MonoBehaviour
     [SerializeField] float startingHealth = 200f;
     [SerializeField] float currentHealth = 0f;
 
+    [SerializeField] AudioClip deathSFX;
+
     //[SerializeField] GameObject deathVFX = null;
 
     [SerializeField] Slider healthBar = null;
@@ -36,6 +38,7 @@ public class Health : MonoBehaviour
                 Cursor.visible = true;
             }
 
+            AudioSource.PlayClipAtPoint(deathSFX, gameObject.transform.position, 1f);
             Destroy(gameObject, 0.5f);
         }
     }

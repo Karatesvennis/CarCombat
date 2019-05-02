@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] float damage = 50f;
     [SerializeField] GameObject deathVFX;
+    [SerializeField] AudioClip deathSFX;
 
     public bool playerShot;
 
@@ -71,6 +72,7 @@ public class Projectile : MonoBehaviour
         gameObject.GetComponent<Collider>().enabled = false;
         gameObject.GetComponentInChildren<Renderer>().enabled = false;
         GameObject myDeathVFX = Instantiate(deathVFX, this.transform.position + Vector3.up, Quaternion.identity);
+        AudioSource.PlayClipAtPoint(deathSFX, transform.position, 1f);
         Destroy(myDeathVFX, 1f);
         Destroy(gameObject, 0.2f);
     }

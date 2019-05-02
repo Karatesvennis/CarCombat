@@ -4753,6 +4753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 200
   deathVFX: {fileID: 100008, guid: 875c9bcb71a8d7f46a64a8a7df5987e0, type: 3}
+  deathSFX: {fileID: 8300000, guid: 7ae5ce4c6701ac440a41237847231984, type: 3}
   playerShot: 0
 --- !u!54 &1918125284383237225
 Rigidbody:

@@ -414,6 +414,7 @@ MonoBehaviour:
   bumpForce: 1000
   bumpExplosionRaduis: 3
   bumpDamage: 100
+  bumpSFX: {fileID: 8300000, guid: 880d2765e2664334f9ccfc48bdeaa50b, type: 3}
 --- !u!1 &5169366653286520992
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,6 +583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 200
   currentHealth: 0
+  deathSFX: {fileID: 8300000, guid: 965f0ec5c5ea9134eabc4676bbe683fa, type: 3}
   healthBar: {fileID: 0}
 --- !u!1 &6285693294321643959
 GameObject:

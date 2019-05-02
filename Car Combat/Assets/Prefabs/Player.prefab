@@ -445,6 +445,7 @@ MonoBehaviour:
   mainCam: {fileID: 0}
   speed: 50
   fireRate: 0.3
+  amountOfAmmo: 0
 --- !u!114 &1223668395626403682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,6 +460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 500
   currentHealth: 0
+  deathSFX: {fileID: 8300000, guid: 965f0ec5c5ea9134eabc4676bbe683fa, type: 3}
   healthBar: {fileID: 0}
 --- !u!1 &1223668396294309218
 GameObject:
@@ -870,6 +872,7 @@ MonoBehaviour:
   bumpForce: 20
   bumpExplosionRaduis: 3
   bumpDamage: 100
+  bumpSFX: {fileID: 8300000, guid: 880d2765e2664334f9ccfc48bdeaa50b, type: 3}
 --- !u!1 &4097074719607175023
 GameObject:
   m_ObjectHideFlags: 0

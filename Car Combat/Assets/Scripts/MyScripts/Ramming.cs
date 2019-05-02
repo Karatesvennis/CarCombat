@@ -10,6 +10,8 @@ public class Ramming : MonoBehaviour
     [SerializeField] float bumpExplosionRaduis = 2f;
     [SerializeField] float bumpDamage = 200f;
 
+    [SerializeField] AudioClip bumpSFX;
+
     float newSpeedForce;
 
     Rigidbody rb;
@@ -42,6 +44,8 @@ public class Ramming : MonoBehaviour
                 Vector3 extraRot = rb.gameObject.transform.right * 45;
 
                 Thread.Sleep(30);
+
+                AudioSource.PlayClipAtPoint(bumpSFX, rb.gameObject.transform.position, 1f);
 
                 if (otherRb.GetComponent<Enemy>())
                 {
