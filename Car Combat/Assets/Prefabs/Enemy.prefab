@@ -562,7 +562,7 @@ MonoBehaviour:
   speed: 5000
   maxPatrolSpeed: 10
   maxAttackSpeed: 15
-  turnspeed: 4
+  turnspeed: 3
   deathVFX: {fileID: 100006, guid: e076683e0305e35498b8e8834978c0fa, type: 3}
   isGrounded: 0
   myState: 0

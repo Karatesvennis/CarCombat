@@ -88,7 +88,7 @@ public class Enemy : MonoBehaviour
 
                     rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxPatrolSpeed);
 
-                    if (proximity.magnitude < 2)
+                    if (proximity.magnitude < 0.5)
                     {
                         SelectTarget();
                     }
