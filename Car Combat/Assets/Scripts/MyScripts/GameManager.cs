@@ -15,11 +15,14 @@ public class GameManager : MonoBehaviour
     public Button mainMenuButton;
     public GameObject crosshair;
     private EnemyShoot enemyShoot;
+    private EnemySpawner enemySpawner;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        enemySpawner = FindObjectOfType<EnemySpawner>();
+        enemySpawner.SpawnEnemies();
         winLabel.gameObject.SetActive(false);
         loseLabel.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
@@ -31,18 +34,32 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nrOfEnemiesAlive <= 0 && !lastWave)
+        TestToKillEnemies();
+
+        if (enemySpawner.firstWaveSpawned && nrOfEnemiesAlive == 0 && !lastWave)
         {
-            FindObjectOfType<EnemySpawner>().SpawnEnemies();
             lastWave = true;
+            enemySpawner.SpawnEnemies();
         }
-        else if (nrOfEnemiesAlive <= 0 && lastWave)
+        else if (enemySpawner.firstWaveSpawned && nrOfEnemiesAlive == 0 && lastWave && enemySpawner.spawning == false)
         {
             winLabel.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
             mainMenuButton.gameObject.SetActive(true);
             Cursor.visible = true;
             crosshair.SetActive(false);
+        }
+    }
+
+    void TestToKillEnemies()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Enemy[] enemies = FindObjectsOfType<Enemy>();
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                Destroy(enemies[i].gameObject);
+            }
         }
     }
 }

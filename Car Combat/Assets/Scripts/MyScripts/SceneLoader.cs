@@ -20,6 +20,11 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("HowToPlay");
     }
 
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
     public void QuitGame()
     {
         Application.Quit();

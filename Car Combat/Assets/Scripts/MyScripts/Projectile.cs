@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] GameObject deathVFX;
     [SerializeField] AudioClip deathSFX;
 
+    GameObject player = null;
+
     public bool playerShot;
 
     TimeFlowManager timeManager;
@@ -17,6 +19,7 @@ public class Projectile : MonoBehaviour
     private void Start()
     {
         timeManager = FindObjectOfType<TimeFlowManager>();
+        player = FindObjectOfType<PlayerController>().gameObject;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,7 +27,7 @@ public class Projectile : MonoBehaviour
 
         if (playerShot && other.tag != "Player" && other.GetType() != typeof(SphereCollider))
         {
-            ExplosionDamageOnImpact(transform.position, 30);
+            ExplosionDamageOnImpact(transform.position, 15);
 
             if (other.GetComponent<Health>())
             {
@@ -72,7 +75,7 @@ public class Projectile : MonoBehaviour
         gameObject.GetComponent<Collider>().enabled = false;
         gameObject.GetComponentInChildren<Renderer>().enabled = false;
         GameObject myDeathVFX = Instantiate(deathVFX, this.transform.position + Vector3.up, Quaternion.identity);
-        AudioSource.PlayClipAtPoint(deathSFX, transform.position, 1f);
+        AudioSource.PlayClipAtPoint(deathSFX, player.transform.position, 1f);
         Destroy(myDeathVFX, 1f);
         Destroy(gameObject, 0.2f);
     }
