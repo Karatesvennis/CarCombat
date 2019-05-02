@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Ramming : MonoBehaviour
@@ -39,6 +40,8 @@ public class Ramming : MonoBehaviour
                 extraForce += Vector3.up * 2;
 
                 Vector3 extraRot = rb.gameObject.transform.right * 45;
+
+                Thread.Sleep(30);
 
                 if (otherRb.GetComponent<Enemy>())
                 {

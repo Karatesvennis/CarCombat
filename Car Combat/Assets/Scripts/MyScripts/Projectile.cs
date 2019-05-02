@@ -55,7 +55,12 @@ public class Projectile : MonoBehaviour
             Rigidbody hitRb = hitColliders[i].gameObject.GetComponent<Rigidbody>();
             if (hitRb != null)
             {
-                hitRb.AddExplosionForce(5f, center, 8f, 3f, ForceMode.Impulse);
+                hitRb.AddExplosionForce(7f, center, 8f, 3f, ForceMode.Impulse);
+                Health health = hitRb.gameObject.GetComponent<Health>();
+                if (health != null)
+                {
+                    health.DealDamage(damage);
+                }
             }
         }
         Invoke("Test", 0.05f);
@@ -64,7 +69,7 @@ public class Projectile : MonoBehaviour
     void DestroyWithVFX()
     {
         gameObject.GetComponent<Collider>().enabled = false;
-        gameObject.GetComponent<Renderer>().enabled = false;
+        gameObject.GetComponentInChildren<Renderer>().enabled = false;
         GameObject myDeathVFX = Instantiate(deathVFX, this.transform.position + Vector3.up, Quaternion.identity);
         Destroy(myDeathVFX, 1f);
         Destroy(gameObject, 0.2f);

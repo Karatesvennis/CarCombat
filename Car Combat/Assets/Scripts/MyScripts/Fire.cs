@@ -11,7 +11,7 @@ public class Fire : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float fireRate;
     float nextFire;
-    int amountOfAmmo = 2;
+    public int amountOfAmmo = 0;
 
     GameObject crosshair;
 
@@ -52,6 +52,7 @@ public class Fire : MonoBehaviour
                     newProjectile.GetComponent<Projectile>().playerShot = true;
                     Rigidbody rb = newProjectile.GetComponent<Rigidbody>();
                     rb.velocity = moveDirection * speed;
+                    rb.rotation = Quaternion.LookRotation(moveDirection);
                     amountOfAmmo--;
                 }
             }

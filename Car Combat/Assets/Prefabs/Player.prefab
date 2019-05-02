@@ -440,8 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bfee48db7b708444b0538c7c9430eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 5896167323806151158, guid: c850236dd80aa2b47a98d1e20e91a4ed,
-    type: 3}
+  projectile: {fileID: 115386, guid: 1d37014fd411c524db3696bba6ff1d21, type: 3}
   gun: {fileID: 1223668395527042942}
   mainCam: {fileID: 0}
   speed: 50
