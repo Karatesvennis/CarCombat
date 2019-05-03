@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TestToKillEnemies();
+        //TestToKillEnemies();
 
         if (enemySpawner.firstWaveSpawned && nrOfEnemiesAlive == 0 && !lastWave)
         {
