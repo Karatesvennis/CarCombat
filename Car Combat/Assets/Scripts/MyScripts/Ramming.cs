@@ -51,14 +51,18 @@ public class Ramming : MonoBehaviour
                 {
                     otherRb.gameObject.GetComponent<Enemy>().extraForce = extraForce;
                     otherRb.gameObject.GetComponent<Enemy>().extraRotation = extraRot;
+
+                    if (rb.gameObject.tag == "Player")
+                    {
+                        other.GetComponentInParent<Health>().DealDamage(bumpDamage);
+                    }
                 }
                 if (otherRb.GetComponent<PlayerController>())
                 {
                     otherRb.gameObject.GetComponent<PlayerController>().extraForce = extraForce;
                     otherRb.gameObject.GetComponent<PlayerController>().extraRotation = extraRot;
+                    other.GetComponentInParent<Health>().DealDamage(bumpDamage);
                 }
-
-                other.GetComponentInParent<Health>().DealDamage(bumpDamage);
             }
         }
     }
