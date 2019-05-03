@@ -501,10 +501,10 @@ MonoBehaviour:
     Control the free look horizontal camera with the mouse.
 
 
-    Fire missiles with left mouse button
+    Fire missiles with left mouse button.
 
 
-    Speed boost by holding down CTRL'
+    Speed boost by holding down SPACE'
 --- !u!222 &1087867502
 CanvasRenderer:
   m_ObjectHideFlags: 0
