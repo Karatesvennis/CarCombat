@@ -78,8 +78,6 @@ public class Enemy : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, Physics.gravity.y, rb.velocity.z);
 
 
-
-
             Vector3 proximity = target - transform.position;
 
             switch (myState)
