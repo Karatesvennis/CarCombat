@@ -828,7 +828,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471710470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -42.7, y: 0.6, z: 42.3}
+  m_LocalPosition: {x: -37.9, y: 0.6, z: 36.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2019040596}
@@ -1082,7 +1082,7 @@ GameObject:
   - component: {fileID: 651582073}
   m_Layer: 0
   m_Name: Ramp (3)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1225,7 +1225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718807359}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 47.2, y: 0.6, z: 43.05}
+  m_LocalPosition: {x: 35.7, y: 0.6, z: 40.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2019040596}
@@ -1318,7 +1318,7 @@ GameObject:
   - component: {fileID: 796264887}
   m_Layer: 0
   m_Name: Ramp (1)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1409,7 +1409,7 @@ GameObject:
   - component: {fileID: 817995108}
   m_Layer: 0
   m_Name: Ramp (6)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1653,7 +1653,7 @@ GameObject:
   - component: {fileID: 1018392633}
   m_Layer: 0
   m_Name: Ramp (4)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1774,7 +1774,7 @@ GameObject:
   - component: {fileID: 1049472134}
   m_Layer: 0
   m_Name: Ramp (11)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1987,7 +1987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1186159208
 Transform:
   m_ObjectHideFlags: 0
@@ -2071,7 +2071,7 @@ GameObject:
   - component: {fileID: 1246794081}
   m_Layer: 0
   m_Name: Ramp (9)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2373,7 +2373,7 @@ GameObject:
   - component: {fileID: 1537165890}
   m_Layer: 0
   m_Name: Ramp (5)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2474,7 +2474,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1584141664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 47.2, y: 0.6, z: -44}
+  m_LocalPosition: {x: 35.3, y: 0.6, z: -37.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2019040596}
@@ -2494,7 +2494,7 @@ GameObject:
   - component: {fileID: 1646396525}
   m_Layer: 0
   m_Name: Ramp
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2802,7 +2802,7 @@ GameObject:
   - component: {fileID: 1784721161}
   m_Layer: 0
   m_Name: Ramp (2)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2933,7 +2933,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819173825}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41.7, y: 0.6, z: -43}
+  m_LocalPosition: {x: -37.4, y: 0.6, z: -36.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2019040596}
@@ -3044,7 +3044,7 @@ GameObject:
   - component: {fileID: 1914427206}
   m_Layer: 0
   m_Name: Ramp (10)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3135,7 +3135,7 @@ GameObject:
   - component: {fileID: 1986928281}
   m_Layer: 0
   m_Name: Ramp (8)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3226,7 +3226,7 @@ GameObject:
   - component: {fileID: 1994773185}
   m_Layer: 0
   m_Name: Ramp (7)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3687,15 +3687,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 510049309, guid: 9913f3e2a1f3a5a4298761906f5c33a5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 472969884239061482}
-    - target: {fileID: 5216061338249511420, guid: 9913f3e2a1f3a5a4298761906f5c33a5,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 472969884239061482}
     - target: {fileID: 5216061339417262517, guid: 9913f3e2a1f3a5a4298761906f5c33a5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3801,6 +3792,15 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5216061338249511420, guid: 9913f3e2a1f3a5a4298761906f5c33a5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 472969884239061482}
+    - target: {fileID: 510049309, guid: 9913f3e2a1f3a5a4298761906f5c33a5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 472969884239061482}
     - target: {fileID: 1786739450, guid: 9913f3e2a1f3a5a4298761906f5c33a5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

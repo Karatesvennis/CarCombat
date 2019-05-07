@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         //TestToKillEnemies();
 
-        if (enemySpawner.firstWaveSpawned && nrOfEnemiesAlive == 0 && !lastWave)
+        /*if (enemySpawner.firstWaveSpawned && nrOfEnemiesAlive == 0 && !lastWave)
         {
             lastWave = true;
             enemySpawner.SpawnEnemies();
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
             mainMenuButton.gameObject.SetActive(true);
             Cursor.visible = true;
             crosshair.SetActive(false);
-        }
+        }*/
     }
 
     void TestToKillEnemies()
