@@ -10,6 +10,7 @@ public class CarEngine : MonoBehaviour
     private List<Transform> nodes;
     private int currentNode = 0;
     private Rigidbody rb;
+    private bool avoiding = false;
 
     public bool isBraking = false;
     public Vector3 centerOfMass;
@@ -71,30 +72,56 @@ public class CarEngine : MonoBehaviour
     private void Sensors()
     {
         RaycastHit hit;
+        float avoidMultiplier = 0;
+        avoiding = false;
 
         if (Physics.Raycast(frontCenterSensor.position, transform.forward, out hit, sensorLength))
         {
-            Debug.DrawLine(frontCenterSensor.position, hit.point, Color.white);
+            if (hit.collider.CompareTag("Ground"))
+            {
+                Debug.DrawLine(frontCenterSensor.position, hit.point, Color.white);
+                avoiding = true;
+            }
         }
 
         if (Physics.Raycast(frontRightSensor.position, transform.forward, out hit, sensorLength))
         {
-            Debug.DrawLine(frontRightSensor.position, hit.point, Color.white);
-        }
-
-        if (Physics.Raycast(frontLeftSensor.position, transform.forward, out hit, sensorLength))
-        {
-            Debug.DrawLine(frontLeftSensor.position, hit.point, Color.white);
+            if (hit.collider.CompareTag("Ground"))
+            {
+                Debug.DrawLine(frontCenterSensor.position, hit.point, Color.white);
+                avoiding = true;
+                avoidMultiplier -= 1f;
+            }
         }
 
         if (Physics.Raycast(rightAngledSensor.position, Quaternion.AngleAxis(fronSensorAngle, transform.up) * transform.forward, out hit, sensorLength))
         {
-            Debug.DrawLine(rightAngledSensor.position, hit.point, Color.white);
+            if (hit.collider.CompareTag("Ground"))
+            {
+                Debug.DrawLine(frontCenterSensor.position, hit.point, Color.white);
+                avoiding = true;
+                avoidMultiplier -= 0.5f;
+            }
+        }
+
+        if (Physics.Raycast(frontLeftSensor.position, transform.forward, out hit, sensorLength))
+        {
+            if (hit.collider.CompareTag("Ground"))
+            {
+                Debug.DrawLine(frontCenterSensor.position, hit.point, Color.white);
+                avoiding = true;
+                avoidMultiplier += 1f;
+            }
         }
 
         if (Physics.Raycast(leftAngledSensor.position, Quaternion.AngleAxis(-fronSensorAngle, transform.up) * transform.forward, out hit, sensorLength))
         {
-            Debug.DrawLine(leftAngledSensor.position, hit.point, Color.white);
+            if (hit.collider.CompareTag("Ground"))
+            {
+                Debug.DrawLine(frontCenterSensor.position, hit.point, Color.white);
+                avoiding = true;
+                avoidMultiplier += 0.5f;
+            }
         }
 
     }
