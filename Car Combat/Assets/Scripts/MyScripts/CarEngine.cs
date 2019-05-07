@@ -29,9 +29,15 @@ public class CarEngine : MonoBehaviour
     public float maxSpeed = 100f;
 
     [Header("Sensors")]
+    public Transform frontCenterSensor;
+    public Transform frontLeftSensor;
+    public Transform frontRightSensor;
+    public Transform leftAngledSensor;
+    public Transform rightAngledSensor;
     public float sensorLength = 5f;
     public float frontSensorPosition = 0.5f;
     public float sideSensorPosition = 0.2f;
+    public float fronSensorAngle = 30f;
     
 
     // Start is called before the first frame update
@@ -65,14 +71,32 @@ public class CarEngine : MonoBehaviour
     private void Sensors()
     {
         RaycastHit hit;
-        Vector3 sensorStartPos = transform.position;
-        sensorStartPos.z += frontSensorPosition;
 
-        if (Physics.Raycast(sensorStartPos, transform.forward, out hit, sensorLength))
+        if (Physics.Raycast(frontCenterSensor.position, transform.forward, out hit, sensorLength))
         {
-            Debug.DrawLine(sensorStartPos, hit.point, Color.white);
+            Debug.DrawLine(frontCenterSensor.position, hit.point, Color.white);
         }
-        
+
+        if (Physics.Raycast(frontRightSensor.position, transform.forward, out hit, sensorLength))
+        {
+            Debug.DrawLine(frontRightSensor.position, hit.point, Color.white);
+        }
+
+        if (Physics.Raycast(frontLeftSensor.position, transform.forward, out hit, sensorLength))
+        {
+            Debug.DrawLine(frontLeftSensor.position, hit.point, Color.white);
+        }
+
+        if (Physics.Raycast(rightAngledSensor.position, Quaternion.AngleAxis(fronSensorAngle, transform.up) * transform.forward, out hit, sensorLength))
+        {
+            Debug.DrawLine(rightAngledSensor.position, hit.point, Color.white);
+        }
+
+        if (Physics.Raycast(leftAngledSensor.position, Quaternion.AngleAxis(-fronSensorAngle, transform.up) * transform.forward, out hit, sensorLength))
+        {
+            Debug.DrawLine(leftAngledSensor.position, hit.point, Color.white);
+        }
+
     }
 
     private void Drive()
