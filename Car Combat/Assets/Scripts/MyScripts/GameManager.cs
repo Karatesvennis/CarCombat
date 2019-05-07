@@ -22,7 +22,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         enemySpawner = FindObjectOfType<EnemySpawner>();
-        enemySpawner.SpawnEnemies();
+        if (enemySpawner != null)
+        {
+            enemySpawner.SpawnEnemies();
+        }
+        
         winLabel.gameObject.SetActive(false);
         loseLabel.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
