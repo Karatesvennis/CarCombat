@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5796979882514712724}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WheelColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7709061517946475964}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Sensors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7087461334371831342}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6452384656679474935}
   - component: {fileID: 6113809610925720750}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WheelFR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 2
+    m_Stiffness: 1
   m_Enabled: 1
 --- !u!1 &2033628278204550816
 GameObject:
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 2033628278205551264}
   - component: {fileID: 2033628278206550112}
   - component: {fileID: 9026795044526712857}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WheelBR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 2033628278205551266}
   - component: {fileID: 2033628278206550114}
   - component: {fileID: 1408303969267938915}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WheelBL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 2033628278205551268}
   - component: {fileID: 2033628278206550116}
   - component: {fileID: 2155994002364407080}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WheelFL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 2033628278205551270}
   - component: {fileID: 2033628278206550118}
   - component: {fileID: 3936009072337630126}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WheelFR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,10 +537,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2033628278204781196}
-  - component: {fileID: 2033628278195174756}
   - component: {fileID: 8270081191167260132}
-  - component: {fileID: 7843032395384065571}
-  m_Layer: 10
+  - component: {fileID: 6008159818380565938}
+  m_Layer: 0
   m_Name: PlayerCar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -562,28 +561,10 @@ Transform:
   - {fileID: 7087461334371831342}
   - {fileID: 5796979882514712724}
   - {fileID: 7709061517946475964}
+  - {fileID: 3815161733898911605}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &2033628278195174756
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2033628278204550828}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: c324f9688c17aec45a96a53dfe034cf6, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!54 &8270081191167260132
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -600,7 +581,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7843032395384065571
+--- !u!114 &6008159818380565938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -609,7 +590,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2033628278204550828}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34f168d3623ee974884bcbb0c42c2332, type: 3}
+  m_Script: {fileID: 11500000, guid: d5907fb50cd670b40bc81a4698d76c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isBraking: 0
@@ -618,20 +599,12 @@ MonoBehaviour:
   wheelFR: {fileID: 6113809610925720750}
   wheelBL: {fileID: 2620004482372873635}
   wheelBR: {fileID: 8420846031855356114}
-  maxSteerAngle: 45
+  maxSteerAngle: 60
   maxMotorTorque: 500
-  maxBrakeTorque: 2000
+  maxBrakeTorque: 800
   currentSpeed: 0
-  maxSpeed: 45
-  turnSpeed: 10
-  frontCenterSensor: {fileID: 4660603000204500128}
-  frontLeftSensor: {fileID: 7131604486542716926}
-  frontRightSensor: {fileID: 4779643890143332925}
-  leftAngledSensor: {fileID: 7480709256440137844}
-  rightAngledSensor: {fileID: 4046420743312076194}
-  angleSensorLength: 5
-  frontSensorLength: 10
-  frontSensorAngle: 30
+  maxSpeed: 100
+  turnSpeed: 25
 --- !u!1 &2033628278204550830
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,7 +617,7 @@ GameObject:
   - component: {fileID: 2033628278205551276}
   - component: {fileID: 2033628278206550124}
   - component: {fileID: 6846490443863042341}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,7 +706,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7480709256440137844}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: LeftAngled
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -763,7 +736,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4660603000204500128}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: FrontCenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -794,7 +767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6777324171423802256}
   - component: {fileID: 8943438391616096175}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WheelFL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -843,7 +816,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 2
+    m_Stiffness: 1
   m_Enabled: 1
 --- !u!1 &4237326397593191140
 GameObject:
@@ -854,7 +827,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7131604486542716926}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: FrontLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -885,7 +858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7093126415950712393}
   - component: {fileID: 8420846031855356114}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WheelBR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -945,7 +918,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4779643890143332925}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: FrontRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -976,7 +949,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5996605632920216150}
   - component: {fileID: 2620004482372873635}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WheelBL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1036,7 +1009,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4046420743312076194}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: RightAngled
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1055,5 +1028,35 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7709061517946475964}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8436611760930694365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3815161733898911605}
+  m_Layer: 0
+  m_Name: CameraCenterPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3815161733898911605
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8436611760930694365}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.782, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2033628278204781196}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

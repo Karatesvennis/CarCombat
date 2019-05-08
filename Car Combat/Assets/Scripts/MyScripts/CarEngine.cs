@@ -39,7 +39,8 @@ public class CarEngine : MonoBehaviour
     public Transform rightAngledSensor;
     public float angleSensorLength = 5f;
     public float frontSensorLength = 10f;
-    public float frontSensorAngle = 30f;
+    public float frontSensorAngle = 10f;
+    public float sideSensorAngle = 45f;
     
 
     // Start is called before the first frame update
@@ -77,7 +78,7 @@ public class CarEngine : MonoBehaviour
         float avoidMultiplier = 0;
         avoiding = false;
 
-        if (Physics.Raycast(frontRightSensor.position, transform.forward, out hit, frontSensorLength))
+        if (Physics.Raycast(frontRightSensor.position, Quaternion.AngleAxis(frontSensorAngle, transform.up) * transform.forward, out hit, frontSensorLength))
         {
             if (!hit.collider.CompareTag("Ground"))
             {
@@ -94,7 +95,7 @@ public class CarEngine : MonoBehaviour
                 }
             }
         }
-        else if (Physics.Raycast(rightAngledSensor.position, Quaternion.AngleAxis(frontSensorAngle, transform.up) * transform.forward, out hit, angleSensorLength))
+        else if (Physics.Raycast(rightAngledSensor.position, Quaternion.AngleAxis(sideSensorAngle, transform.up) * transform.forward, out hit, angleSensorLength))
         {
             if (!hit.collider.CompareTag("Ground"))
             {
@@ -112,7 +113,7 @@ public class CarEngine : MonoBehaviour
             }
         }
 
-        if (Physics.Raycast(frontLeftSensor.position, transform.forward, out hit, frontSensorLength))
+        if (Physics.Raycast(frontLeftSensor.position, Quaternion.AngleAxis(-frontSensorAngle, transform.up) * transform.forward, out hit, frontSensorLength))
         {
             if (!hit.collider.CompareTag("Ground"))
             {
@@ -129,7 +130,7 @@ public class CarEngine : MonoBehaviour
                 }
             }
         }
-        else if (Physics.Raycast(leftAngledSensor.position, Quaternion.AngleAxis(-frontSensorAngle, transform.up) * transform.forward, out hit, angleSensorLength))
+        else if (Physics.Raycast(leftAngledSensor.position, Quaternion.AngleAxis(-sideSensorAngle, transform.up) * transform.forward, out hit, angleSensorLength))
         {
             if (!hit.collider.CompareTag("Ground"))
             {

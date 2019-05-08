@@ -30,27 +30,44 @@ public class PlayerCarController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.centerOfMass = centerOfMass;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        Drive();
+        ApplySteer();
     }
 
     private void Drive()
     {
         currentSpeed = 2 * Mathf.PI * wheelFL.radius * wheelFL.rpm * 60 / 1000;
+        float acceleration = Input.GetAxis("Vertical");
 
-        if (currentSpeed < maxSpeed && !isBraking)
+        if (currentSpeed < maxSpeed)
         {
-            wheelFL.motorTorque = maxMotorTorque;
-            wheelFR.motorTorque = maxMotorTorque;
+            wheelFL.motorTorque = maxMotorTorque * acceleration;
+            wheelFR.motorTorque = maxMotorTorque * acceleration;
         }
         else
         {
             wheelFL.motorTorque = 0;
             wheelFR.motorTorque = 0;
         }
+    }
+
+    private void ApplySteer()
+    {
+        float turn = Input.GetAxis("Horizontal");
+        float newSteer = maxSteerAngle * turn;
+        targetSteerAngle = newSteer;
+        LerpToSteerAngle();
+    }
+
+    private void LerpToSteerAngle()
+    {
+        wheelFL.steerAngle = Mathf.Lerp(wheelFL.steerAngle, targetSteerAngle, Time.fixedDeltaTime * turnSpeed);
+        wheelFR.steerAngle = Mathf.Lerp(wheelFR.steerAngle, targetSteerAngle, Time.fixedDeltaTime * turnSpeed);
     }
 }
