@@ -37,7 +37,8 @@ public class CarEngine : MonoBehaviour
     public Transform frontRightSensor;
     public Transform leftAngledSensor;
     public Transform rightAngledSensor;
-    public float sensorLength = 5f;
+    public float angleSensorLength = 5f;
+    public float frontSensorLength = 10f;
     public float frontSensorAngle = 30f;
     
 
@@ -76,47 +77,79 @@ public class CarEngine : MonoBehaviour
         float avoidMultiplier = 0;
         avoiding = false;
 
-        if (Physics.Raycast(frontRightSensor.position, transform.forward, out hit, sensorLength))
+        if (Physics.Raycast(frontRightSensor.position, transform.forward, out hit, frontSensorLength))
         {
             if (!hit.collider.CompareTag("Ground"))
             {
                 Debug.DrawLine(frontRightSensor.position, hit.point, Color.white);
                 avoiding = true;
                 avoidMultiplier -= 1f;
+                if (currentSpeed > 5)
+                {
+                    isBraking = true;
+                }
+                else
+                {
+                    isBraking = false;
+                }
             }
         }
-        else if (Physics.Raycast(rightAngledSensor.position, Quaternion.AngleAxis(frontSensorAngle, transform.up) * transform.forward, out hit, sensorLength))
+        else if (Physics.Raycast(rightAngledSensor.position, Quaternion.AngleAxis(frontSensorAngle, transform.up) * transform.forward, out hit, angleSensorLength))
         {
             if (!hit.collider.CompareTag("Ground"))
             {
                 Debug.DrawLine(rightAngledSensor.position, hit.point, Color.white);
                 avoiding = true;
                 avoidMultiplier -= 0.5f;
+                if (currentSpeed > 5)
+                {
+                    isBraking = true;
+                }
+                else
+                {
+                    isBraking = false;
+                }
             }
         }
 
-        if (Physics.Raycast(frontLeftSensor.position, transform.forward, out hit, sensorLength))
+        if (Physics.Raycast(frontLeftSensor.position, transform.forward, out hit, frontSensorLength))
         {
             if (!hit.collider.CompareTag("Ground"))
             {
                 Debug.DrawLine(frontLeftSensor.position, hit.point, Color.white);
                 avoiding = true;
                 avoidMultiplier += 1f;
+                if (currentSpeed > 5)
+                {
+                    isBraking = true;
+                }
+                else
+                {
+                    isBraking = false;
+                }
             }
         }
-        else if (Physics.Raycast(leftAngledSensor.position, Quaternion.AngleAxis(-frontSensorAngle, transform.up) * transform.forward, out hit, sensorLength))
+        else if (Physics.Raycast(leftAngledSensor.position, Quaternion.AngleAxis(-frontSensorAngle, transform.up) * transform.forward, out hit, angleSensorLength))
         {
             if (!hit.collider.CompareTag("Ground"))
             {
                 Debug.DrawLine(leftAngledSensor.position, hit.point, Color.white);
                 avoiding = true;
                 avoidMultiplier += 0.5f;
+                if (currentSpeed > 5)
+                {
+                    isBraking = true;
+                }
+                else
+                {
+                    isBraking = false;
+                }
             }
         }
 
         if (avoidMultiplier == 0)
         {
-            if (Physics.Raycast(frontCenterSensor.position, transform.forward, out hit, sensorLength))
+            if (Physics.Raycast(frontCenterSensor.position, transform.forward, out hit, frontSensorLength))
             {
                 if (!hit.collider.CompareTag("Ground"))
                 {
@@ -129,6 +162,15 @@ public class CarEngine : MonoBehaviour
                     else
                     {
                         avoidMultiplier = 1;
+                    }
+
+                    if (currentSpeed > 5)
+                    {
+                        isBraking = true;
+                    }
+                    else
+                    {
+                        isBraking = false;
                     }
                 }
             }
@@ -174,6 +216,7 @@ public class CarEngine : MonoBehaviour
     private void ApplySteer()
     {
         if (avoiding) return;
+        isBraking = false;
         Vector3 relativeVector = transform.InverseTransformPoint(nodes[currentNode].position);
         float newSteer = (relativeVector.x / relativeVector.magnitude) * maxSteerAngle;
         targetSteerAngle = newSteer;

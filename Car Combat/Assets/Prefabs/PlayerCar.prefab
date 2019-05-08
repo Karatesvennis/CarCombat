@@ -620,16 +620,17 @@ MonoBehaviour:
   wheelBR: {fileID: 8420846031855356114}
   maxSteerAngle: 45
   maxMotorTorque: 500
-  maxBrakeTorque: 800
+  maxBrakeTorque: 2000
   currentSpeed: 0
-  maxSpeed: 100
+  maxSpeed: 45
   turnSpeed: 10
   frontCenterSensor: {fileID: 4660603000204500128}
   frontLeftSensor: {fileID: 7131604486542716926}
   frontRightSensor: {fileID: 4779643890143332925}
   leftAngledSensor: {fileID: 7480709256440137844}
   rightAngledSensor: {fileID: 4046420743312076194}
-  sensorLength: 5
+  angleSensorLength: 5
+  frontSensorLength: 10
   frontSensorAngle: 30
 --- !u!1 &2033628278204550830
 GameObject:
@@ -716,7 +717,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033628278204550830}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 7b6407614707d4f4ba5bfa5806be5e86, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
